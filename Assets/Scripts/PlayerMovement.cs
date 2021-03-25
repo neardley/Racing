@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     WheelCollider FLW, FRW, RLW, RRW;
 
     float wheelPos, currentTorqe;
-    float maxSteerAngle = 40f;
+    float maxSteerAngle = 30f;
 
     // Start is called before the first frame update
     void Start()
