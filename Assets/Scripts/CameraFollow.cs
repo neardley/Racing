@@ -15,6 +15,6 @@ public class CameraFollow : MonoBehaviour
         float damping = Vector3.Distance(target.position, transform.position)* dampingFactor;
         wantedPosition = target.TransformPoint(0, height, -distance);
         transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
-        transform.LookAt(target, target.up);
+        transform.LookAt(target);
     }
 }
