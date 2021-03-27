@@ -4,45 +4,42 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float maxTorqe;
-    [SerializeField] bool Rearwheeldrive = true;
+    [SerializeField] float horsePower;
+    [SerializeField] List<WheelCollider> steeringWheels;
+    [SerializeField] List<WheelCollider> drivenWheels;
+
     Rigidbody rb;
 
-    WheelCollider FLW, FRW, RLW, RRW;
-
-    float wheelPos, currentTorqe;
+    float wheelPos, currentTorqe, drivenWheelRadius;
     float maxSteerAngle = 30f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        FLW = transform.Find("Wheel_Front_Left").GetComponent<WheelCollider>();
-        FRW = transform.Find("Wheel_Front_Right").GetComponent<WheelCollider>();
-        RLW = transform.Find("Wheel_Rear_Left").GetComponent<WheelCollider>();
-        RRW = transform.Find("Wheel_Rear_Right").GetComponent<WheelCollider>();
+        drivenWheelRadius = drivenWheels[0].radius;
     }
 
     // I put all physics related things in here
     private void FixedUpdate()
     {
-        currentTorqe = Input.GetAxis("Vertical")*maxTorqe;
-        if (Rearwheeldrive)
+        float c = horsePower * 1136.8f * drivenWheelRadius / drivenWheels.Count;
+        currentTorqe = Input.GetAxis("Vertical") * c;
+        if(rb.velocity.magnitude > 1)
         {
-            RLW.motorTorque = currentTorqe;
-            RRW.motorTorque = currentTorqe;
+            currentTorqe /= rb.velocity.magnitude;
         }
-        else
+        wheelPos = Input.GetAxis("Horizontal") * maxSteerAngle;
+
+        foreach (WheelCollider wheel in drivenWheels)
         {
-            FLW.motorTorque = currentTorqe;
-            FRW.motorTorque = currentTorqe;
+            wheel.motorTorque = currentTorqe;
         }
 
-        
-        wheelPos = Input.GetAxis("Horizontal")*maxSteerAngle;
-        FLW.steerAngle = wheelPos;
-        FRW.steerAngle = wheelPos;
-
+        foreach(WheelCollider wheel in steeringWheels)
+        {
+            wheel.steerAngle = wheelPos;
+        }
 
     }
 

@@ -348,6 +348,8 @@ GameObject:
   - component: {fileID: 2275932643449217991}
   - component: {fileID: 2275932643449217989}
   - component: {fileID: 4495802885085416407}
+  - component: {fileID: -423459102352888625}
+  - component: {fileID: -9134380194750545496}
   m_Layer: 0
   m_Name: Car_1
   m_TagString: Untagged
@@ -402,8 +404,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e3fbe63b4fb95448c381019d3457ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTorqe: 500
-  Rearwheeldrive: 1
+  horsePower: 800
+  steeringWheels:
+  - {fileID: 2275932643679128061}
+  - {fileID: 2275932642847114596}
+  drivenWheels:
+  - {fileID: 2275932642473722548}
+  - {fileID: 2275932642871261653}
 --- !u!65 &4495802885085416407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -415,8 +422,46 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4910126, y: 0.16863778, z: 4.6286774}
-  m_Center: {x: 0.0061798096, y: 0.14063726, z: -0.001083374}
+  m_Size: {x: 1.4910126, y: 0.14, z: 4.6286774}
+  m_Center: {x: 0.0061798096, y: 0.18, z: -0.001083374}
+--- !u!114 &-423459102352888625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275932643449120105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &-9134380194750545496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275932643449120105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2275932643449120109
 GameObject:
   m_ObjectHideFlags: 0
