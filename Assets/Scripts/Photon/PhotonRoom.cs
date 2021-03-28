@@ -70,12 +70,14 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         myNumberInRoom = playersInRoom;
         if (playersInRoom >= 2)
         {
-            StartGame();
+            Debug.Log("Game Should Start");
+            PV.RPC("StartGame", RpcTarget.AllBuffered);
         }
 
     }
 
 
+    [PunRPC]
     void StartGame()
     {
         if (!PhotonNetwork.IsMasterClient)
