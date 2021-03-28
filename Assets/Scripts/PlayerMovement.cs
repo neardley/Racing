@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         {
             int newIndex = Game_Control.instance.GetGateIndex(other.gameObject);
 
+            Debug.Log("Last Gate:" + lastGateIndex.ToString() + "  new Gate:" + newIndex.ToString());
             //is next gate?
             if(newIndex == lastGateIndex + 1)
             {
