@@ -74,20 +74,22 @@ public class Game_Control : MonoBehaviourPunCallbacks
     [PunRPC]
     void WinGame(int playerid)
     {
+        UI_Control uiScript = gameObject.GetComponent<UI_Control>();
+
         if(PhotonNetwork.IsMasterClient)
         {
             if (playerid == 1)
-                Debug.Log("YOU WIN");
+                uiScript.DisplayEnd(true);
+
             else
-                Debug.Log("YOU LOSE");
+                uiScript.DisplayEnd(false);
         }
         else
         {
             if (playerid == 1)
-                Debug.Log("YOU LOSE");
+                uiScript.DisplayEnd(false);
             else
-                Debug.Log("YOU WIN");
-            
+                uiScript.DisplayEnd(true);
         }
 
 

@@ -6,6 +6,10 @@ using System;
 
 public class UI_Control : MonoBehaviour
 {
+    [Header("End Display")]
+    [SerializeField] Transform winDisplaytf;
+    [SerializeField] Transform loseDisplaytf;
+
     [Header("Speed Display")]
     [SerializeField] Transform speedDisplaytf;
     TMP_Text speedDisplay;
@@ -58,5 +62,18 @@ public class UI_Control : MonoBehaviour
         this.player = player.transform;
         playerRB = player.GetComponent<Rigidbody>();
         playerScript = player.GetComponent<PlayerMovement>();
+    }
+
+
+    public void DisplayEnd(bool isWinner)
+    {
+        if (isWinner)
+        {
+            winDisplaytf.gameObject.SetActive(true);
+        }
+        else
+        {
+            loseDisplaytf.gameObject.SetActive(true);
+        }
     }
 }
