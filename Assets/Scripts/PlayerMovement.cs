@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] List<WheelCollider> drivenWheels;
 
     Rigidbody rb;
+    private PhotonView PV;
+    private CharacterController myCC;
 
     float wheelPos, currentTorqe, drivenWheelRadius;
     float maxSteerAngle = 30f;
@@ -18,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         drivenWheelRadius = drivenWheels[0].radius;
+        PV = GetComponent<PhotonView>();
+        myCC = GetComponent<CharacterController>();
     }
 
     // I put all physics related things in here
