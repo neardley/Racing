@@ -22,6 +22,8 @@ public class Game_Control : MonoBehaviourPunCallbacks
 
     public static Game_Control instance;
 
+    public static double StartTime;
+
     [Header("Components")]
     public PhotonView photonView;
 
@@ -55,6 +57,7 @@ public class Game_Control : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsMasterClient)
         {
             playerObj = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[0].position, Quaternion.identity);
+            StartTime = PhotonNetwork.Time;
         }
         else
         {
@@ -68,6 +71,7 @@ public class Game_Control : MonoBehaviourPunCallbacks
         {
             CameraFollow.instance.AssignTarget(playerObj);
             gameObject.GetComponent<UI_Control>().AssignTarget(playerObj);
+            playerScript.SetStartTime(StartTime);
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using Photon.Pun;
 
 public class UI_Control : MonoBehaviour
 {
@@ -49,7 +50,10 @@ public class UI_Control : MonoBehaviour
 
             lapDisplay.text = "Gate:" + (playerScript.lastGateIndex + 1).ToString() + "/" + totalGates.ToString();
 
-
+            Double currentTime = playerScript.ShowStartTime() - PhotonNetwork.Time;
+            int minutes = (int)(Math.Floor(currentTime) / 60);
+            int seconds = (int)(Math.Floor(currentTime) % 60);
+            timeDisplay.text = minutes.ToString() + " : " + seconds.ToString(); 
         }
     }
 

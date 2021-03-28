@@ -27,7 +27,17 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public int lastGateIndex = -1;
 
+    public static double StartingTime;
 
+    public void SetStartTime(double time)
+    {
+        StartingTime = time;
+    }
+
+    public double ShowStartTime()
+    {
+        return StartingTime;
+    }
 
     [PunRPC]
     public void Init(Player player)
@@ -69,6 +79,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         }
 
     }
+
+
 
     private void Update()
     {

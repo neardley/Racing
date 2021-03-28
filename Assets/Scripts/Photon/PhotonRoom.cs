@@ -20,7 +20,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     Player[] photonPlayers;
     public int playersInRoom;
     public int myNumberInRoom;
-
+    
 
     private void Awake()
     {
@@ -86,6 +86,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         }
         else
         {
+            double startTime = PhotonNetwork.Time;
             PhotonNetwork.LoadLevel(1);
         }
     }
