@@ -74,8 +74,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyDown(KeyCode.R) && lastGateIndex != -1)
         {
-            transform.position = Game_Control.instance.trackGates[lastGateIndex].transform.position;
             rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            transform.position = Game_Control.instance.trackGates[lastGateIndex].transform.position;
+            transform.rotation = Game_Control.instance.trackGates[lastGateIndex].transform.rotation;
+
+
+
         }
 
     }
