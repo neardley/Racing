@@ -74,9 +74,26 @@ public class Game_Control : MonoBehaviourPunCallbacks
     [PunRPC]
     void WinGame(int playerid)
     {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            if (playerid == 1)
+                Debug.Log("YOU WIN");
+            else
+                Debug.Log("YOU LOSE");
+        }
+        else
+        {
+            if (playerid == 1)
+                Debug.Log("YOU LOSE");
+            else
+                Debug.Log("YOU WIN");
+            
+        }
+
+
 
         gameEnded = true;
-        //Invoke("GoBackToMenu", 3.0f);
+        Invoke("GoBackToMenu", 3.0f);
     }
 
     void GoBackToMenu()
