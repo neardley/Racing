@@ -100,14 +100,14 @@ WheelCollider:
   m_Mass: 10
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1
@@ -212,14 +212,14 @@ WheelCollider:
   m_Mass: 10
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1
@@ -324,14 +324,14 @@ WheelCollider:
   m_Mass: 10
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e3fbe63b4fb95448c381019d3457ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horsePower: 800
+  horsePower: 150
   steeringWheels:
   - {fileID: 2275932643679128061}
   - {fileID: 2275932642847114596}
@@ -566,14 +566,14 @@ WheelCollider:
   m_Mass: 10
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 2
-    m_ExtremumValue: 5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 1
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 1
     m_Stiffness: 1

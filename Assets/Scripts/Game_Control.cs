@@ -93,7 +93,7 @@ public class Game_Control : MonoBehaviourPunCallbacks
 
 
         gameEnded = true;
-        -Invoke("GoBackToMenu", 3.0f);
+        Invoke("GoBackToMenu", 3.0f);
     }
 
     void GoBackToMenu()
