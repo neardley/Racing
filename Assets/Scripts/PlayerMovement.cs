@@ -27,6 +27,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public int lastGateIndex = -1;
 
+    public int otherGateindex = -1;
+
+
+
+
     public static double StartingTime;
 
     public void SetStartTime(double time)
@@ -115,7 +120,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             {
                 Game_Control.instance.photonView.RPC("WinGame", RpcTarget.All, id);
             }
+
+            
         }
     }
+
 
 }
