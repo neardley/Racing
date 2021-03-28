@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e672e555eaf2d9448e6cd9d3475ad07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefabPath: PlayerPrefab
   isGameLoaded: 0
   currentScene: 0
   multiplayerScene: 1

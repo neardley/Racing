@@ -89,7 +89,10 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         currentScene = scene.buildIndex;
         if (currentScene == multiplayerScene)
-            CreatePlayer();
+        {
+            //CreatePlayer();
+        }
+
     }
 
     private void CreatePlayer()

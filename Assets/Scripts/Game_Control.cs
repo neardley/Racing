@@ -1,54 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using System.Linq;
 
-public class Game_Control : MonoBehaviour
+public class Game_Control : MonoBehaviourPunCallbacks
 {
-    [SerializeField] Transform[] trackGates;
-    Transform[] players;
+    [Header("Race Info")]
+    public List<GameObject> trackGates;
+    public bool gameEnded = false;
+    public int numLaps;
 
-    int maxlaps, currentlap;
-    int[] playerRacePositions;
+    [Header("Player Info")]
+    public string playerPrefabLocation;
+    public Transform[] spawnPoints;
+    public PlayerMovement[] players;
+    public int[] playerPositions;
+    private int playersInGame;
+    private int playersSpawned = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public static Game_Control instance;
+
+    [Header("Components")]
+    public PhotonView photonView;
+
+    private void Awake()
     {
-
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        players = new PlayerMovement[PhotonNetwork.PlayerList.Length];
+        playerPositions = new int[PhotonNetwork.PlayerList.Length];
+        photonView.RPC("NotifyJoin", RpcTarget.AllBuffered);
     }
 
-    void StartTimer()
+    [PunRPC]
+    void NotifyJoin()
     {
+        playersInGame++;
 
+        if(playersInGame == PhotonNetwork.PlayerList.Length)
+        {
+            SpawnPlayer();
+        }
+    }
+    
+    void SpawnPlayer()
+    {
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[playersSpawned].position, Quaternion.identity);
+
+        PlayerMovement playerScript = playerObj.GetComponent<PlayerMovement>();
+
+        playerScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer);
+        if (playerObj.GetPhotonView().IsMine)
+        {
+            CameraFollow.instance.AssignTarget(playerObj);
+            gameObject.GetComponent<UI_Control>().AssignTarget(playerObj);
+        }
     }
 
-    void StopTimer()
+    public int GetGateIndex(GameObject gate)
     {
-
-    }
-
-    void GetPlayers()
-    {
-
-    }
-
-    void UnFreezePlayers()
-    {
-
-    }
-
-    void FreezePlayers()
-    {
-
-    }
-
-    void EndRace()
-    {
-
+        return trackGates.FindIndex(x => x.GetInstanceID() == gate.GetInstanceID());
     }
 }
