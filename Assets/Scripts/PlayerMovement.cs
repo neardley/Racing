@@ -19,13 +19,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     Rigidbody rb;
 
-    private int id;
+    public int id;
     Player photonPlayer;
 
     [Header("Components")]
     public PhotonView photonView;
 
-    int lastGateIndex = -1;
+    public int lastGateIndex = -1;
 
 
 
@@ -72,7 +72,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        
+        //if master and game ended stop timer
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,12 +83,18 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         {
             int newIndex = Game_Control.instance.GetGateIndex(other.gameObject);
 
-             
+            //is next gate?
+            if(newIndex == lastGateIndex + 1)
+            {
+                lastGateIndex = newIndex;
+            }
+
+            //is last gate?
+            if(newIndex == 0 && lastGateIndex == Game_Control.instance.trackGates.Count - 1)
+            {
+                Game_Control.instance.photonView.RPC("WinGame", RpcTarget.All, id);
+            }
         }
     }
 
-    void EndRace()
-    {
-
-    }
 }

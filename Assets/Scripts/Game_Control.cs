@@ -62,8 +62,27 @@ public class Game_Control : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
+    void WinGame(int playerid)
+    {
+
+        gameEnded = true;
+        //Invoke("GoBackToMenu", 3.0f);
+    }
+
+    void GoBackToMenu()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("Mainscreen");
+    }
+
     public int GetGateIndex(GameObject gate)
     {
         return trackGates.FindIndex(x => x.GetInstanceID() == gate.GetInstanceID());
+    }
+
+    public PlayerMovement GetPlayer(int playerId)
+    {
+        return players.First(x => x.id == playerId);
     }
 }

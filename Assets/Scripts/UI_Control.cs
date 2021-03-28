@@ -25,6 +25,9 @@ public class UI_Control : MonoBehaviour
     [Header("Player")]
     Transform player;
     Rigidbody playerRB;
+    PlayerMovement playerScript;
+
+    int totalGates;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,7 @@ public class UI_Control : MonoBehaviour
         placeDisplay = placeDisplaytf.GetComponent<TMP_Text>();
         lapDisplay = lapdisplaytf.GetComponent<TMP_Text>();
         timeDisplay = timeDisplaytf.GetComponent<TMP_Text>();
+        totalGates = Game_Control.instance.trackGates.Count;
     }
 
     // Update is called once per frame
@@ -42,6 +46,7 @@ public class UI_Control : MonoBehaviour
         {
             //convert meters per sec to mph
             speedDisplay.text = Math.Round(playerRB.velocity.magnitude * 2.23694).ToString() + " mph";
+            lapDisplay.text = "Gate:" + (playerScript.lastGateIndex + 1).ToString() + "/" + totalGates.ToString();
         }
     }
 
@@ -49,5 +54,6 @@ public class UI_Control : MonoBehaviour
     {
         this.player = player.transform;
         playerRB = player.GetComponent<Rigidbody>();
+        playerScript = player.GetComponent<PlayerMovement>();
     }
 }
