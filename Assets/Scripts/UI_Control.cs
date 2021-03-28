@@ -46,7 +46,10 @@ public class UI_Control : MonoBehaviour
         {
             //convert meters per sec to mph
             speedDisplay.text = Math.Round(playerRB.velocity.magnitude * 2.23694).ToString() + " mph";
+
             lapDisplay.text = "Gate:" + (playerScript.lastGateIndex + 1).ToString() + "/" + totalGates.ToString();
+
+
         }
     }
 

@@ -72,8 +72,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        //if master and game ended stop timer
-
+        if (Input.GetKeyDown("R") && lastGateIndex != -1)
+        {
+            transform.position = Game_Control.instance.trackGates[lastGateIndex].transform.position;
+            rb.velocity = Vector3.zero;
+        }
 
     }
 
