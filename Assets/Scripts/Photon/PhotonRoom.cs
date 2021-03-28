@@ -68,7 +68,10 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         photonPlayers = PhotonNetwork.PlayerList;
         playersInRoom = photonPlayers.Length;
         myNumberInRoom = playersInRoom;
-        StartGame();
+        if (playersInRoom >= 2)
+        {
+            StartGame();
+        }
 
     }
 
