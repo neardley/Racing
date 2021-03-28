@@ -50,7 +50,16 @@ public class Game_Control : MonoBehaviourPunCallbacks
     
     void SpawnPlayer()
     {
-        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[playersSpawned].position, Quaternion.identity);
+        GameObject playerObj;
+
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            playerObj = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[0].position, Quaternion.identity);
+        }
+        else
+        {
+            playerObj = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[1].position, Quaternion.identity);
+        }
 
         PlayerMovement playerScript = playerObj.GetComponent<PlayerMovement>();
 
