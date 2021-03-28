@@ -53,11 +53,12 @@ public class UI_Control : MonoBehaviour
             speedDisplay.text = Math.Round(playerRB.velocity.magnitude * 2.23694).ToString() + " mph";
 
             lapDisplay.text = "Gate:" + (playerScript.lastGateIndex + 1).ToString() + "/" + totalGates.ToString();
-
+            /*
             Double currentTime = playerScript.ShowStartTime() - PhotonNetwork.Time;
             int minutes = (int)(Math.Floor(currentTime) / 60);
             int seconds = (int)(Math.Floor(currentTime) % 60);
             timeDisplay.text = minutes.ToString() + " : " + seconds.ToString(); 
+            */
         }
     }
 
