@@ -411,7 +411,9 @@ MonoBehaviour:
   drivenWheels:
   - {fileID: 2275932642473722548}
   - {fileID: 2275932642871261653}
+  id: 0
   photonView: {fileID: -9134380194750545496}
+  lastGateIndex: -1
 --- !u!65 &4495802885085416407
 BoxCollider:
   m_ObjectHideFlags: 0
